@@ -20,7 +20,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 /* ===========================
    HEADER
 =========================== */
@@ -45,11 +44,9 @@ header {
   padding-inline: clamp(16px, 6vw, 120px);
 }
 
-
 .hero-contenido {
   width: 50%;
   position: relative;
-
 }
 
 h1 {
@@ -76,16 +73,16 @@ h1 {
   color: var(--color-blanco);
 }
 
-
 /* Botones del hero */
 
 .botonera {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  padding-inline: clamp(16px, 6vw, 120px);
+  /* padding-inline: clamp(16px, 6vw, 120px); */
   padding-bottom: 48px;
   text-align: center;
+  justify-content: left;
 }
 
 .botonera a {
@@ -116,12 +113,12 @@ nav {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--color-fondo);
-  
 }
 
 nav ul {
   width: 100%;
   display: grid;
+
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   justify-items: center;
   align-items: center;
@@ -137,13 +134,19 @@ nav li {
 nav a {
   color: var(--color-fondo);
   text-decoration: none;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 0.8rem + 0.6vw, 1.3rem);
   font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
 }
 
 nav a:hover {
   color: var(--color-fondo);
-  padding-bottom: 6px;
+  /* padding-bottom: 6px; */
   border-bottom: 1px solid var(--color-fondo);
 }
 
@@ -158,7 +161,6 @@ nav a:hover {
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0);
@@ -169,10 +171,18 @@ nav a:hover {
   }
 }
 
+/* BURGER QUEEN, AQUÍ YO SOY LA QUEEN */
+.hamburguesa {
+  display: none;
+  font-size: 2rem;
+  color: var(--color-fondo);
+  cursor: pointer;
+  position: sticky;
+}
+
 /* ===========================
    MAIN
 =========================== */
-
 
 /* SECCION 1 - Sobre StargateTour */
 
@@ -224,10 +234,6 @@ article p {
 .quienes strong {
   color: var(--color-rosa);
 }
-
-
-
-
 
 /* SECCIÓN 2 - Destinos Galácticos */
 
@@ -324,10 +330,6 @@ section.destinos h2 {
   background: var(--color-azul);
 }
 
-
-
-
-
 /* SECCIÓN 3 - Cruceros Espaciales */
 
 section.cruceros {
@@ -402,18 +404,15 @@ section.cruceros h2 {
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s;
-
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 }
 
 .btn-crucero:hover {
   background-color: var(--color-azul);
   transform: translateY(-2px);
 }
-
-
-
-
 
 /* SECCIÓN 4: Calculadora Galáctica */
 
@@ -531,10 +530,6 @@ section.calculadora {
   font-weight: 700;
   color: var(--color-morado);
 }
-
-
-
-
 
 /* SECCIÓN 5: Agujeros de Gusano */
 
@@ -694,11 +689,6 @@ section.agujeros-gusano {
   transform: scale(0.98);
 }
 
-
-
-
-
-
 /* ===========================
    BIGFOOT
 =========================== */
@@ -710,12 +700,27 @@ section.agujeros-gusano {
   border-top: 2px solid var(--color-morado);
 }
 
+.footer-frase {
+  text-align: center;
+  padding-bottom: 48px;
+}
+
+.footer-frase h3 {
+  color: var(--color-azul);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
 .footer-contenedor {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
+  display: flex;
+  gap: 150px;
+  justify-content: center;
+}
+
+.footer-seccion {
+  flex: 0 1 30;
 }
 
 .footer-seccion h3 {
@@ -725,7 +730,8 @@ section.agujeros-gusano {
 }
 
 .footer-seccion p,
-.footer-seccion a, .footer-seccion li {
+.footer-seccion a,
+.footer-seccion li {
   color: var(--color-gris);
   text-decoration: none;
   line-height: 1.8;
@@ -767,4 +773,132 @@ section.agujeros-gusano {
   color: var(--color-gris);
   font-size: 0.9rem;
   line-height: 2em;
+}
+
+/*=========================================
+  RESPONSIVE
+=========================================*/
+
+/* ---------- TABLETS Y MÓVILES ---------- */
+
+@media (max-width: 920px) {
+  .footer-contenedor {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 855px) {
+  /* NAVBAR */
+
+  nav {
+    min-height: auto;
+    padding: 15px 20px;
+    justify-content: space-between;
+    position: sticky;
+    top:0;
+  }
+
+  .hamburguesa {
+    display: block;
+    
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background: var(--color-blanco);
+
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    border-top: 1px solid #ddd;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  nav ul.activo {
+    display: grid;
+  }
+
+  nav li {
+    width: 100%;
+    padding: 18px;
+    border-bottom: 1px solid #eee;
+  }
+
+  nav a {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  /* HERO */
+
+  .hero {
+    min-height: auto;
+    padding: 40px 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-contenido {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero h2 {
+    font-size: 1.7rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+
+  .botonera a {
+    width: 100%;
+  }
+
+  /* FOOTER */
+
+  .footer {
+    padding: 40px 20px 20px;
+  }
+
+  .footer-contenedor {
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .redes ul {
+    display: inline-block;
+    text-align: center;
+    list-style-position: inside;
+  }
+
+  /* #caja-centrada {
+      text-align: center;
+      width: 50%;
+      border: 1px solid black;
+      margin: 20px auto;
+      color: rgb(150, 20, 220);
+    } */
+
+  .redes {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    margin-top: 20px;
+  }
 }

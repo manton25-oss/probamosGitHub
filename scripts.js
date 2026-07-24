@@ -137,7 +137,7 @@ function generarPasajes() {
     mensajeGusano.innerHTML = `${nombreEmpresa} debe seleccionar al menos un pasajero`;
   } else if (cantidadPasajerosGusano > 10 || !Number.isInteger(cantidadPasajerosGusano)) {
     mensajeGusano.innerHTML = `${nombreEmpresa} puede adquirir como máximo 10 pasajes`;
-     mensajeGusano.innerHTML = `${nombreEmpresa} ha de introducir un número entero`;
+    mensajeGusano.innerHTML = `${nombreEmpresa} ha de introducir un número entero`;
   } else {
     for (let pasaje = 1; pasaje <= cantidadPasajerosGusano; pasaje++) {
       let codigoPasaje;
@@ -173,4 +173,34 @@ function resetearGusano() {
   inputPasajerosGusano.value = "";
   listaPasajes.innerHTML = "";
   reseteaGusano.style.display = "none";
+}
+
+// VALE, MARÍA, ME LA JUEGO A HACER EL BURGERMENU CON JS, DESÉAME SUERTE PORQUE LA IA YA LA TENGO DE MI LADO xD
+
+// Merce, primero tienes que crear las variables
+// Después tienes que hacer los listeners
+// Después tienes que hacer la funcion
+// ¿Chupado, no? verás que no...  a ver... (como diría mi padre: "eso dijo el ciego") tengo un nav con una ul y luego un div con una class hamburgesa ,(por cierto, hamburguesa la que me comía yo ahora)
+// lo que quieres es que aparezca el menú hamburguesa en el div hamburguesa
+
+const menu = document.getElementById("menu");
+const btnHamburguesa = document.querySelector(".hamburguesa");
+
+btnHamburguesa.addEventListener("click", abrirHamburguesa);
+
+function abrirHamburguesa() {
+  menu.classList.toggle("activo");
+}
+
+const linksHamburguesa = menu.querySelectorAll("a");
+
+linksHamburguesa.forEach((link) => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("activo");
+  });
+});
+
+window.addEventListener("scroll", cerrarHamburguesa)
+function cerrarHamburguesa(){
+  menu.classList.remove("activo")
 }
